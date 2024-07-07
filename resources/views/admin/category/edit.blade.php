@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Add Category</h1>
+                        <h1>Edit Category</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -54,9 +54,9 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Parent Category</label>
                                     <select class="form-control" name="parent_id">
-                                        <option value="0">Main Category</option>
+                                        <option value="0" selected="selected">Main Category</option>
                                         @foreach($datalist as $rs)
-                                            <option value="{{$rs->id}}">{{$rs->title}}</option>
+                                            <option value="{{$rs->id}}">{{ \App\Http\Controllers\Admin\CategoryController::getParentsTree($rs, $rs->title) }}</option>
                                         @endforeach
                                     </select>
                                 </div>

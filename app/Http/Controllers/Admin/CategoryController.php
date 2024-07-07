@@ -9,6 +9,18 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
+    protected $appends = [
+        'getParentsTree'
+    ];
+
+     public static  function  getParentsTree($category,$title){
+         if($category->parent_Id == 0){
+             return $title;
+         }
+         $parent = Category::find($category->parent_Id);
+         $title = $parent->title . ' > ' .$title;
+         return  CategoryController::getParentsTree($parent,$title);
+     }
     /**
      * Display a listing of the resource.
      */
