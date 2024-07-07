@@ -48,7 +48,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="/admin/category/update/{{$data->id}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('admin.category.update',['id'=>$data->id])}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">

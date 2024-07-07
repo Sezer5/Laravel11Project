@@ -16,8 +16,8 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Blank Page</li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
+                            <li class="breadcrumb-item active">Categories</li>
                         </ol>
                     </div>
                 </div>
@@ -76,11 +76,11 @@
                                                 @endif
 
 
-                                                <td><a href="/admin/category/show/{{ $rs->id }}"
+                                                <td><a href="{{route('admin.category.show',['id'=>$rs->id])}}"
                                                     onclick="return !window.open(this.href,'','top=50 left=100 width=1100,height=700')"
                                                     >Show</a></td>
-                                                <td><a href="/admin/category/edit/{{ $rs->id }}">Edit</a></td>
-                                                <td><a href="/admin/category/destroy/{{ $rs->id }}">Delete</a></td>
+                                                <td><a href="{{route('admin.category.edit',['id'=>$rs->id])}}">Edit</a></td>
+                                                <td><a href="{{route('admin.category.destroy',['id'=>$rs->id])}}"  onclick="return confirm('Deleting Are Yout Sure?')">Delete</a></td>
 
 
 

@@ -26,6 +26,15 @@
                   <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                   <li class="nav-item">
+                      <a href="{{route('admin.index')}}" class="nav-link">
+                          <i class="nav-icon fas fa-home"></i>
+                          <p>
+                              Home
+                              
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
                       <a href="#" class="nav-link">
                           <i class="nav-icon fas fa-tachometer-alt"></i>
                           <p>
@@ -35,39 +44,21 @@
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="/admin/category" class="nav-link">
-                                  <i class="fas fa-list"></i> 
+                              <a href="{{ route('admin.category.index') }}" class="nav-link">
+                                  <i class="fas fa-list"></i>
                                   <p>Categories</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="/admin/category/create" class="nav-link">
-                                  <i class="fas fa-plus"></i> 
+                              <a href="{{ route('admin.category.create') }}" class="nav-link">
+                                  <i class="fas fa-plus"></i>
                                   <p>Create Category</p>
                               </a>
                           </li>
                       </ul>
                   </li>
-                  <li class="nav-item">
-                      <a href="../widgets.html" class="nav-link">
-                          <i class="nav-icon fas fa-th"></i>
-                          <p>
-                              Widgets
-                              <span class="right badge badge-danger">New</span>
-                          </p>
-                      </a>
-                  </li>
-
                   <li class="nav-header">EXAMPLES</li>
-                  <li class="nav-item">
-                      <a href="../calendar.html" class="nav-link">
-                          <i class="nav-icon far fa-calendar-alt"></i>
-                          <p>
-                              Calendar
-                              <span class="badge badge-info right">2</span>
-                          </p>
-                      </a>
-                  </li>
+                  
               </ul>
           </nav>
           <!-- /.sidebar-menu -->
