@@ -56,6 +56,7 @@
                                             <th>Keywords</th>
                                             <th>Status</th>
                                             <th>Image</th>
+                                            <th>Gallery</th>
                                             <th>Show</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -75,7 +76,9 @@
                                                     <td><img src="{{ Storage::url($rs->image) }}" style="width:140px;"></td>
                                                 @endif
 
-
+                                                <td><a href="{{route('admin.image.show',['id'=>$rs->id])}}"
+                                                    onclick="return !window.open(this.href,'','top=50 left=100 width=1100,height=700')"
+                                                    >Gallery</a></td>
                                                 <td><a href="{{route('admin.product.show',['id'=>$rs->id])}}"
                                                     onclick="return !window.open(this.href,'','top=50 left=100 width=1100,height=700')"
                                                     >Show</a></td>

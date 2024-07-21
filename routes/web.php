@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ImageController as ImageController;
 use \App\Http\Controllers\HomeController as HomeController;
 use \App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use \App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
@@ -63,6 +64,18 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/store', 'store')->name('store');
         Route::get('/edit/{id}','edit')->name('edit');
         Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/destroy/{id}','destroy')->name('destroy');
+        Route::get('/show/{id}','show')->name('show');
+    });
+
+    // ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER 
+    // ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER 
+    // ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER 
+    // ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER 
+    // ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER 
+
+    Route::prefix('/image')->name('image.')->controller(ImageController::class)->group(function(){
+        Route::post('/store/{id}', 'store')->name('store');
         Route::get('/destroy/{id}','destroy')->name('destroy');
         Route::get('/show/{id}','show')->name('show');
     });

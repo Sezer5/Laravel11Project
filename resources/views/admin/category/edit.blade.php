@@ -6,6 +6,8 @@
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -71,8 +73,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Description</label>
-                                    <input type="text" class="form-control" name="description"
-                                    value="{{$data->description}}">
+                                    <textarea name="description" id="description" cols="30" rows="10">{{$data->description}}</textarea>
+
+                                    <script>
+                                        ClassicEditor
+                                            .create( document.querySelector( '#description' ) )
+                                            .then( editor => {
+                                                console.log( editor );
+                                            } )
+                                            .catch( error => {
+                                                console.error( error );
+                                            } );
+                                    </script>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Status</label>
