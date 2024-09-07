@@ -27,6 +27,7 @@ use \App\Http\Controllers\Admin\AdminProductController as AdminProductController
 // *****************************USER ROUTES ********************************
 // *****************************USER ROUTES ********************************
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/product/{id}', [HomeController::class, 'product'])->name('product');
 
 // *****************************ADMIN ROUTES *******************************
 // *****************************ADMIN ROUTES *******************************

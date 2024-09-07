@@ -2,23 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    public static function maincategorylist(){
+
+        return Category::where('parent_id','=',0)->with('children')->get();
+
+    }
+
     public function index()
     {
         //
         //echo "Index Function!";
         $sliderdata_active=Product::limit(1)->get();
-        $sliderdata=Product::skip(1)->take(3)->get();;
+        $sliderdata=Product::skip(1)->take(3)->get();
+        $products=Product::all();
         return view('home.index',[
             'sliderdata_active'=>$sliderdata_active,
             'sliderdata'=>$sliderdata,
+            'products'=>$products,
         ]);
     }
 
@@ -85,5 +98,17 @@ class HomeController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function product($id)
+    {
+        //
+        //echo "Index Function!";
+        $product=Product::find($id);
+        $images = Image::where('product_id',$id)->get();
+        return view('home.product',[
+            'product'=>$product,
+            'images'=>$images,
+        ]);
     }
 }
