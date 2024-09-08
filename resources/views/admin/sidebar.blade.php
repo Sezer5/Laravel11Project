@@ -35,6 +35,15 @@
                       </a>
                   </li>
                   <li class="nav-item">
+                    <a href="{{route('admin.setting')}}" class="nav-link">
+                        <i class="nav-icon fas fa-wrench"></i>
+                        <p>
+                            Settings
+                            
+                        </p>
+                    </a>
+                </li>
+                  <li class="nav-item">
                       <a href="#" class="nav-link">
                           <i class="nav-icon fas fa-tachometer-alt"></i>
                           <p>

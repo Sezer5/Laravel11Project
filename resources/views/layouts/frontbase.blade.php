@@ -3,9 +3,10 @@
 <head>
     <title>@yield('title')</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="@yield('icon')">
+    <meta name="description" content="@yield("description")">
+    <meta name="keywords" content="@yield("keywords")">
+    <meta name="author" content="Sezer ÜNALMIŞ">
     <link href="{{asset('assets')}}/User/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset('assets')}}/User/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{asset('assets')}}/User/css/prettyPhoto.css" rel="stylesheet">

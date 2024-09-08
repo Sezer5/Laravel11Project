@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,10 +29,12 @@ class HomeController extends Controller
         $sliderdata_active=Product::limit(1)->get();
         $sliderdata=Product::skip(1)->take(3)->get();
         $products=Product::all();
+        $settings=Settings::first();
         return view('home.index',[
             'sliderdata_active'=>$sliderdata_active,
             'sliderdata'=>$sliderdata,
             'products'=>$products,
+            'settings'=>$settings,
         ]);
     }
 

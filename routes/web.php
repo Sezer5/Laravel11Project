@@ -38,6 +38,12 @@ Route::get('/categoryproducts/{id}/{slug}', [HomeController::class, 'categorypro
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/', [AdminHomeController::class, 'index'])->name('index');
 
+    //*****************************GENERAL ROUTES *********************
+
+    Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
+    Route::post('/setting_update/{id}', [AdminHomeController::class, 'setting_update'])->name('setting_update');
+    
+
     // *****************************ADMIN CATEGORY ROUTES *********************
     // *****************************ADMIN CATEGORY ROUTES *********************
     // *****************************ADMIN CATEGORY ROUTES *********************

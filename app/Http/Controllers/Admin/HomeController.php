@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Settings;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -62,5 +63,42 @@ class HomeController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function setting()
+    {
+        //
+        
+        $data=Settings::first();
+        if($data===null){
+            $data=new Settings();
+            $data->title='Project Title';
+            $data->save();
+            $data=Settings::first();
+        }
+
+        return view("admin.setting ",[
+            'data' => $data,
+        ]);
+    }
+
+    public function setting_update(Request $request, string $id)
+    {
+        $data=Settings::find($id);
+        $data->title = $request->title;
+        $data->keywords = $request->keywords;
+        $data->description = $request->description;
+        $data->company = $request->company;
+        $data->address = $request->address;
+        $data->phone = $request->phone;
+        $data->email = $request->email;
+        $data->contact = $request->contact;
+        $data->aboutus = $request->aboutus;
+        $data->status = $request->status;
+        if($request->file('icon')){
+            $data->icon=$request->file('icon')->store('public/images');
+        };
+        $data->save();
+        return redirect('admin/setting');
     }
 }
