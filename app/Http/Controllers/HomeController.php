@@ -111,4 +111,19 @@ class HomeController extends Controller
             'images'=>$images,
         ]);
     }
+
+    public function categoryproducts($id)
+    {
+        //
+        $sliderdata_active=Product::limit(1)->get();
+        $sliderdata=Product::skip(1)->take(3)->get();
+        $category=Category::find($id);
+        $products = DB::table('products')->where('category_id',$id)->get();
+        return view('home.categoryproducts',[
+            'category'=>$category,
+            'products'=>$products,
+            'sliderdata_active'=>$sliderdata_active,
+            'sliderdata'=>$sliderdata,
+        ]);
+    }
 }

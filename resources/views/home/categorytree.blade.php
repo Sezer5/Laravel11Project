@@ -21,7 +21,7 @@
         </div>
         </li>
     @else
-        <li><a href=""></a>{{ $subcategory->title }}</li>
+        <li><a href="{{route('categoryproducts',['id'=>$subcategory->id,'slug'=>$subcategory->title])}}">{{ $subcategory->title }}</a></li>
     @endif
 @endforeach
 {{-- @foreach($children as $subcategory)
