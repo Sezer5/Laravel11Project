@@ -98,7 +98,18 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Contact</label>
-                                <input type="text" class="form-control" name="contact" value="{{$data->contact}}">
+                                <textarea name="contact" id="contact" cols="30" rows="10">{{$data->contact}}</textarea>
+
+                                <script>
+                                    ClassicEditor
+                                        .create( document.querySelector( '#contact' ) )
+                                        .then( editor => {
+                                            console.log( editor );
+                                        } )
+                                        .catch( error => {
+                                            console.error( error );
+                                        } );
+                                </script>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">About Us</label>

@@ -129,4 +129,36 @@ class HomeController extends Controller
             'sliderdata'=>$sliderdata,
         ]);
     }
+
+    public function contact()
+    {
+        //
+        //echo "Index Function!";
+        $sliderdata_active=Product::limit(1)->get();
+        $sliderdata=Product::skip(1)->take(3)->get();
+        $products=Product::all();
+        $settings=Settings::first();
+        return view('home.contact',[
+            'sliderdata_active'=>$sliderdata_active,
+            'sliderdata'=>$sliderdata,
+            'products'=>$products,
+            'settings'=>$settings,
+        ]);
+    }
+
+    public function aboutus()
+    {
+        //
+        //echo "Index Function!";
+        $sliderdata_active=Product::limit(1)->get();
+        $sliderdata=Product::skip(1)->take(3)->get();
+        $products=Product::all();
+        $settings=Settings::first();
+        return view('home.aboutus',[
+            'sliderdata_active'=>$sliderdata_active,
+            'sliderdata'=>$sliderdata,
+            'products'=>$products,
+            'settings'=>$settings,
+        ]);
+    }
 }
