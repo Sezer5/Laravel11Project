@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\ImageController as ImageController;
+use App\Http\Controllers\Admin\MessagesController as MessagesController;
 use \App\Http\Controllers\HomeController as HomeController;
+use App\Http\Controllers\Admin\ImageController as ImageController;
 use \App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use \App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use \App\Http\Controllers\Admin\AdminProductController as AdminProductController;
@@ -29,6 +30,7 @@ use \App\Http\Controllers\Admin\AdminProductController as AdminProductController
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{id}', [HomeController::class, 'product'])->name('product');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/storemessage', [HomeController::class, 'storemessage'])->name('storemessage');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 Route::get('/categoryproducts/{id}/{slug}', [HomeController::class, 'categoryproducts'])->name('categoryproducts');
 
@@ -76,6 +78,18 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/update/{id}', 'update')->name('update');
         Route::get('/destroy/{id}','destroy')->name('destroy');
         Route::get('/show/{id}','show')->name('show');
+    });
+
+    // ADMIN MESSAGES CONTROLLER ROUTES ****************************************
+    // ADMIN MESSAGES CONTROLLER ROUTES ****************************************
+    // ADMIN MESSAGES CONTROLLER ROUTES ****************************************
+    // ADMIN MESSAGES CONTROLLER ROUTES ****************************************
+    
+
+    Route::prefix('/messages')->name('messages.')->controller(MessagesController::class)->group(function(){
+        Route::get('/','index')->name('index');
+        Route::get('/show/{id}','show')->name('show');
+        Route::post('/update/{id}', 'update')->name('update');
     });
 
     // ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER ADMIN GALLERY CONTROLLER 

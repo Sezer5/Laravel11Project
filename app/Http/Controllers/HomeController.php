@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\Message;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Settings;
@@ -160,5 +161,19 @@ class HomeController extends Controller
             'products'=>$products,
             'settings'=>$settings,
         ]);
+    }
+
+    public function storemessage(Request $request){
+        // dd($request); Post edilen verileri göstermek için kullanılır.
+        $data=new Message();
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->phone = $request->phone;
+        $data->subject = $request->subject;
+        $data->message = $request->message;
+        $data->Ip = $request->ip();
+        
+        $data->save();
+        return redirect()->route('contact')->with('success', 'Message Sended!');   
     }
 }
