@@ -6,6 +6,7 @@ use \App\Http\Controllers\HomeController as HomeController;
 use App\Http\Controllers\Admin\ImageController as ImageController;
 use \App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use \App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use \App\Http\Controllers\Admin\FaqController as AdminFaqController;
 use \App\Http\Controllers\Admin\AdminProductController as AdminProductController;
 
 // // 1-Write a message with route
@@ -32,6 +33,7 @@ Route::get('/product/{id}', [HomeController::class, 'product'])->name('product')
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/storemessage', [HomeController::class, 'storemessage'])->name('storemessage');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/categoryproducts/{id}/{slug}', [HomeController::class, 'categoryproducts'])->name('categoryproducts');
 
 // *****************************ADMIN ROUTES *******************************
@@ -71,6 +73,23 @@ Route::prefix('admin')->name('admin.')->group(function(){
     // ADMIN PRODUCT CONTROLLER ROUTES ****************************************
 
     Route::prefix('/product')->name('product.')->controller(AdminProductController::class)->group(function(){
+        Route::get('/','index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/destroy/{id}','destroy')->name('destroy');
+        Route::get('/show/{id}','show')->name('show');
+    });
+
+    // ADMIN FAQ CONTROLLER ROUTES ****************************************
+    // ADMIN FAQ CONTROLLER ROUTES ****************************************
+    // ADMIN FAQ CONTROLLER ROUTES ****************************************
+    // ADMIN FAQ CONTROLLER ROUTES ****************************************
+    // ADMIN FAQ CONTROLLER ROUTES ****************************************
+    
+
+    Route::prefix('/faq')->name('faq.')->controller(AdminFaqController::class)->group(function(){
         Route::get('/','index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');

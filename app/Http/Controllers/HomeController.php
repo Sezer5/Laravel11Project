@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Faq;
 use App\Models\Image;
 use App\Models\Message;
 use App\Models\Product;
@@ -30,12 +31,14 @@ class HomeController extends Controller
         $sliderdata_active=Product::limit(1)->get();
         $sliderdata=Product::skip(1)->take(3)->get();
         $products=Product::all();
+        $faq=Faq::all();
         $settings=Settings::first();
         return view('home.index',[
             'sliderdata_active'=>$sliderdata_active,
             'sliderdata'=>$sliderdata,
             'products'=>$products,
             'settings'=>$settings,
+            'faq'=>$faq,
         ]);
     }
 
@@ -175,5 +178,23 @@ class HomeController extends Controller
         
         $data->save();
         return redirect()->route('contact')->with('success', 'Message Sended!');   
+    }
+
+    public function faq()
+    {
+        //
+        //echo "Index Function!";
+        $sliderdata_active=Product::limit(1)->get();
+        $sliderdata=Product::skip(1)->take(3)->get();
+        $products=Product::all();
+        $faq=Faq::all();
+        $settings=Settings::first();
+        return view('home.faq',[
+            'sliderdata_active'=>$sliderdata_active,
+            'sliderdata'=>$sliderdata,
+            'products'=>$products,
+            'settings'=>$settings,
+            'faq'=>$faq,
+        ]);
     }
 }
