@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\MessagesController as MessagesController;
+use App\Http\Controllers\Admin\CommentController;
 use \App\Http\Controllers\HomeController as HomeController;
 use App\Http\Controllers\Admin\ImageController as ImageController;
-use \App\Http\Controllers\Admin\HomeController as AdminHomeController;
-use \App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use \App\Http\Controllers\Admin\FaqController as AdminFaqController;
+use \App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\MessagesController as MessagesController;
+use \App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use \App\Http\Controllers\Admin\AdminProductController as AdminProductController;
 
 // // 1-Write a message with route
@@ -32,6 +33,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{id}', [HomeController::class, 'product'])->name('product');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/storemessage', [HomeController::class, 'storemessage'])->name('storemessage');
+Route::post('/storecomment', [HomeController::class, 'storecomment'])->name('storecomment');
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/categoryproducts/{id}/{slug}', [HomeController::class, 'categoryproducts'])->name('categoryproducts');
@@ -106,6 +108,16 @@ Route::prefix('admin')->name('admin.')->group(function(){
     
 
     Route::prefix('/messages')->name('messages.')->controller(MessagesController::class)->group(function(){
+        Route::get('/','index')->name('index');
+        Route::get('/show/{id}','show')->name('show');
+        Route::post('/update/{id}', 'update')->name('update');
+    });
+
+    // ADMIN COMMENT CONTROLLER ROUTES ****************************************
+    
+    
+
+    Route::prefix('/comments')->name('comments.')->controller(CommentController::class)->group(function(){
         Route::get('/','index')->name('index');
         Route::get('/show/{id}','show')->name('show');
         Route::post('/update/{id}', 'update')->name('update');

@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use App\Models\User;
 use App\Models\Image;
+use App\Models\Comment;
 use App\Models\Message;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
@@ -21,6 +24,13 @@ class HomeController extends Controller
     public static function maincategorylist(){
 
         return Category::where('parent_id','=',0)->with('children')->get();
+
+    }
+
+    public static function reviewname($id){
+       
+        $data=User::find($id);
+        return  $data->name;
 
     }
 
@@ -112,10 +122,12 @@ class HomeController extends Controller
         //
         //echo "Index Function!";
         $product=Product::find($id);
+        $comment=Comment::where('product_id',$id)->get();
         $images = Image::where('product_id',$id)->get();
         return view('home.product',[
             'product'=>$product,
             'images'=>$images,
+            'comment'=>$comment,
         ]);
     }
 
@@ -196,5 +208,18 @@ class HomeController extends Controller
             'settings'=>$settings,
             'faq'=>$faq,
         ]);
+    }
+    public function storecomment(Request $request){
+        // dd($request); Post edilen verileri göstermek için kullanılır.
+        $data=new Comment();
+        $data->user_id = Auth::id();
+        $data->product_id = $request->input('product_id');
+        $data->subject = $request->input('subject');
+        $data->review = $request->input('review');        
+        $data->rate = $request->input('rate');        
+        $data->Ip = $request->ip();
+        
+        $data->save();
+        return redirect()->route('product',['id'=>$request->input('product_id')])->with('comment', 'Thank you for your comment.');   
     }
 }

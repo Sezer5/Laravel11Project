@@ -29,3 +29,9 @@
         {!! \Session::get('faq_deleted') !!}
     </div>
 @endif
+@if (\Session::has('comment'))
+    <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">X</button>
+        {!! \Session::get('comment') !!}
+    </div>
+@endif

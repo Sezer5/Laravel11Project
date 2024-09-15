@@ -53,6 +53,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.comments.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-scroll"></i>
+                        <p>
+                            Comments
+                            
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.faq.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-question"></i>
                         <p>
