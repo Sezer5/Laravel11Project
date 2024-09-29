@@ -37,6 +37,9 @@ Route::post('/storecomment', [HomeController::class, 'storecomment'])->name('sto
 Route::get('/aboutus', [HomeController::class, 'aboutus'])->name('aboutus');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/categoryproducts/{id}/{slug}', [HomeController::class, 'categoryproducts'])->name('categoryproducts');
+Route::view('/loginuser','home.login')->name('loginuser');
+Route::view('/registeruser','home.register')->name('registeruser');
+Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 
 // *****************************ADMIN ROUTES *******************************
 // *****************************ADMIN ROUTES *******************************
@@ -149,12 +152,12 @@ Route::prefix('admin')->name('admin.')->group(function(){
 //     return view('welcome');
 // });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });

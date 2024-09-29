@@ -222,4 +222,12 @@ class HomeController extends Controller
         $data->save();
         return redirect()->route('product',['id'=>$request->input('product_id')])->with('comment', 'Thank you for your comment.');   
     }
+
+    public function logout(Request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
 }
